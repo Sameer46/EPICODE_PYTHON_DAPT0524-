@@ -170,7 +170,7 @@ for lettera in nome_scuola:
 # # init while num <= 10: range_numerico.append(num) num += 1
 
 range_numerico = list() 
-num = 1  
+num = 0  
 potenza = int(input())
 while num <= 10: 
     risultato = potenza**num
@@ -389,3 +389,127 @@ if numeri_filtrati:
 else:
     # If no numbers are >= K, print an appropriate message
     print(f"Non ci sono numeri maggiori o uguali a {K} nella lista.")
+
+# 20 Esercizio Scrivere un programma che, data una lista di numeri, 
+# come output stamperà lo stesso numero di asterischi su righe diverse, 
+# ottenendo una semplice visualizzazione grafica Esempio, 
+# supponendo di avere il seguente input: numeri = [5, 2, 3, 4] 
+# L'output sarà: ***** ** *** ****   
+
+
+
+
+
+# 21 Esercizio Abbiamo una lista di codici fiscali: 
+# lista_cf = ["ABCDEF95G01A123B", "GHIJKL91M02A321C", "MNOPQR89S03A456D", "STUVWX95Z04A654E", "XYZABC01D05A789F", "DEFGHI95J06A987G"]
+# • trovare i codici fiscali che contengono "95", metterli in una lista, e alla fine stamparla; 
+# • inoltre, per ognuno di essi, stampare a video i caratteri relativi al nome e quelli relativi al cognome.
+
+lista_cf = ["ABCDEF95G01A123B", "GHIJKL91M02A321C", "MNOPQR89S03A456D", "STUVWX95Z04A654E", "XYZABC01D05A789F", "DEFGHI95J06A987G"]
+
+cf_95=[]
+
+for cf in lista_cf:
+    if "95" in cf:
+        cf_95.append(cf)
+
+print("Codici fiscali che contengono '95':")
+print(cf_95)
+
+
+for cf in cf_95:
+    cognome = cf[:3]  # I primi 3 caratteri sono il cognome
+    nome = cf[3:6]  # I successivi 3 caratteri sono il nome
+    print(f"Codice Fiscale: {cf} -> Cognome: {cognome}, Nome: {nome}")
+
+
+
+# 22 Esercizio Abbiamo tre liste della stessa lunghezza, dove ogni elemento nella
+# medesima posizione si riferisce ai dati dello stesso studente: 
+# studenti = ["Alex", "Bob", "Cindy", "Dan", "Emma", "Faith", "Grace", "Henry"] 
+# corsi = ["Cybersecurity", "Data Analyst", "Backend", "Frontend", "Data Analyst", "Backend", "Frontend", "Cybersecurity"] 
+# edizioni = [1, 2, 3, 2, 2, 1, 3, 3] 
+# • Stampare a video tutti e soli gli studenti che frequentano una prima edizione;
+# non tutti i dati potrebbero essere necessari. 
+# • Riuscite a vedere una similarità con la logica che si usa in SQL e le tabelle relazionali?
+studenti = ["Alex", "Bob", "Cindy", "Dan", "Emma", "Faith", "Grace", "Henry"]
+corsi = ["Cybersecurity", "Data Analyst", "Backend", "Frontend", "Data Analyst", "Backend", "Frontend", "Cybersecurity"]
+edizioni = [1, 2, 3, 2, 2, 1, 3, 3]
+
+
+for i in range(len(studenti)):
+    if edizioni[i] == 1:  # Controlliamo se l'edizione è la prima
+        print(studenti[i])  # Stampiamo il nome dello studente
+
+
+
+# 23 Esercizio Abbiamo una lista di stringhe di prezzi in dollari, 
+# che erroneamente sono stati scritti con il simbolo dell'euro: 
+# prezzi = ["100 €", "200 €", "500 €", "10 €", "50 €", "70 €"] 
+# cambiare il simbolo dell'euro (€) in quello del dollaro ($) 
+# per ogni stringa nella lista; il risultato sarà memorizzato in un'altra lista.
+
+prezzi = ["100 €", "200 €", "500 €", "10 €", "50 €", "70 €"]
+
+prezzi_in_dollari = []
+
+for prezzo in prezzi:
+    # Sostituire il simbolo dell'euro (€) con il simbolo del dollaro ($)
+    prezzo_in_dollaro = prezzo.replace("€", "$")
+    # Aggiungere il prezzo modificato alla nuova lista
+    prezzi_in_dollari.append(prezzo_in_dollaro)
+
+# Stampare la lista dei prezzi in dollari
+print(prezzi_in_dollari)
+
+
+
+# 24 Esercizio Abbiamo una lista di studenti: 
+# studenti = ["Alex", "Bob", "Cindy", "Dan", "Emma", "Faith", "Grace", "Henry", "Isabelle", "John"]
+# vogliamo dividere gli studenti in due squadre per un campionato di Uno nel seguente modo:
+# selezioneremo i nomi in posizione pari per un squadra, 
+# e i nomi in posizione dispari per l'altra. Creiamo due liste per ogni squadra, 
+# e alla fine visualizziamole.
+
+
+
+studenti = ["Alex", "Bob", "Cindy", "Dan", "Emma", "Faith", "Grace", "Henry", "Isabelle", "John"]
+
+squadra1 = studenti[::2]
+
+squadra2 = studenti[1::2]
+
+print("Squadra 1 (posizioni pari):", squadra1)
+print("Squadra 2 (posizioni dispari):", squadra2)
+
+
+
+#25 Esercizio Abbiamo una lista con i guadagni degli ultimi 12 mesi 
+# (supponiamo da Gennaio a Dicembre): 
+# guadagni = [100, 90, 70, 40, 50, 80, 90, 120, 80, 20, 50, 50] 
+# dobbiamo confrontare, stampando tutto a video, il guadagno di ogni mese con la media dei guadagni precedenti,
+# e specificare nell'output se il guadagno attuale è maggiore o minore della media dei precedenti.
+# Esempio di un possibile output: Mese 1: 100 € Mese 2: 90 € (media prec: 100 € - il guadagno attuale è minore) Mese 3: 70 € (media prec: 95 € - il guadagno attuale è minore)
+guadagni = [100, 90, 70, 40, 50, 80, 90, 120, 80, 20, 50, 50]
+
+
+for i in range(1, len(guadagni)):  # Inizia dal mese 2 (indice 1)
+    mese_corrente = guadagni[i]
+    guadagni_precedenti = guadagni[:i]  # Guadagni precedenti al mese corrente
+    media_precedenti = sum(guadagni_precedenti) / len(guadagni_precedenti)  # Calcola la media dei guadagni precedenti
+    
+    if mese_corrente > media_precedenti:
+        risultato = "il guadagno attuale è maggiore"
+    else:
+        risultato = "il guadagno attuale è minore"
+    
+    print(f"Mese {i+1}: {mese_corrente} € (media prec: {media_precedenti:.2f} €) - {risultato}")
+
+
+
+
+
+
+
+
+
